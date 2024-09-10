@@ -4,7 +4,7 @@ plugins {
 }
 
 application{
-    mainClass.set("org.acdc.Main")
+    mainClass.set("org.acdc.EchoServerApplication")
 }
 
 group = "org.acdc"
@@ -38,8 +38,12 @@ dependencies {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "org.acdc.Main"
+        attributes["Main-Class"] = "org.acdc.EchoServerApplication"
     }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from({
+        configurations.runtimeClasspath.get().filter{it.name.endsWith("jar")}.map{zipTree(it)}
+    })
 }
 tasks.test {
     useJUnitPlatform()
