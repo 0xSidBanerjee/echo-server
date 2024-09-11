@@ -12,7 +12,6 @@ public class EchoServerApplication {
     int port = 1234;
 
     public static void main(String[] args) throws IOException {
-        log.info("Starting echo server...");
         EchoServerApplication app = new EchoServerApplication();
 
         JCommander commander = JCommander
@@ -31,6 +30,7 @@ public class EchoServerApplication {
         server.start();
     }
 }
+
 //debug => All message
 //warn => error, info, warning
 //info => error, info
